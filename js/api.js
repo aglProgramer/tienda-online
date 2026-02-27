@@ -10,7 +10,7 @@ const headers = {
 export const api = {
     async getProducts() {
         try {
-            const response = await fetch(`${SUPABASE_URL}/productos?select=*`, {
+            const response = await fetch(`${SUPABASE_URL}/producto?select=*`, {
                 method: "GET",
                 headers: headers
             });
@@ -24,7 +24,7 @@ export const api = {
 
     async createClient(clientData) {
         try {
-            const response = await fetch(`${SUPABASE_URL}/clientes`, {
+            const response = await fetch(`${SUPABASE_URL}/cliente`, {
                 method: "POST",
                 headers: {
                     ...headers,
@@ -49,7 +49,7 @@ export const api = {
 
     async createSale(saleData) {
         try {
-            const response = await fetch(`${SUPABASE_URL}/ventas`, {
+            const response = await fetch(`${SUPABASE_URL}/venta`, {
                 method: "POST",
                 headers: {
                     ...headers,
@@ -68,7 +68,7 @@ export const api = {
 
     async createSaleDetail(details) {
         try {
-            const response = await fetch(`${SUPABASE_URL}/detalle_ventas`, {
+            const response = await fetch(`${SUPABASE_URL}/detalle_venta`, {
                 method: "POST",
                 headers: {
                     ...headers,
