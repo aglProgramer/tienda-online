@@ -102,3 +102,6 @@ export const api = {
         }
     }
 };
+
+// Alias para evitar errores si se llama con 'e' al final
+api.checkCliente = api.checkClient;
