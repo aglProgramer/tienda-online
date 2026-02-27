@@ -85,5 +85,20 @@ export const api = {
             console.error("Error creating sale detail:", error);
             throw error;
         }
+    },
+
+    async checkClient(email, document) {
+        try {
+            const response = await fetch(`${SUPABASE_URL}/cliente?email=eq.${email}&documento=eq.${document}&select=*`, {
+                method: "GET",
+                headers: headers
+            });
+            if (!response.ok) throw new Error("Verification failed");
+            const result = await response.json();
+            return result.length > 0 ? result[0] : null;
+        } catch (error) {
+            console.error("Error verifying client:", error);
+            throw error;
+        }
     }
 };

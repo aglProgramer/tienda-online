@@ -22,6 +22,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     // Initialize cart count
     updateCartCount();
+    checkSession();
 
     // Fetch and render products
     try {
