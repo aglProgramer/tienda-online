@@ -14,36 +14,46 @@
     <link rel="stylesheet" href="css/styles.css">
 </head>
 
-<body class="selection:bg-primary selection:text-navy">
+<body class="selection:bg-primary selection:text-navy overflow-x-hidden">
     <div class="fixed inset-0 bg-[radial-gradient(circle_at_20%_30%,#0f172a_0%,#020617_100%)] -z-20"></div>
     <div
         class="fixed inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-10 mix-blend-overlay -z-10">
     </div>
 
-    <aside class="fixed left-0 top-0 h-full w-[280px] glass border-r border-white/10 z-50 flex flex-col">
-        <div class="p-8 mb-8">
+    <!-- Mobile Menu Toggle -->
+    <button id="menu-toggle"
+        class="lg:hidden fixed top-6 right-8 z-[60] bg-primary text-navy p-3 rounded-xl shadow-lg shadow-primary/20">
+        <span class="material-symbols-outlined font-bold">menu</span>
+    </button>
+
+    <aside id="sidebar"
+        class="fixed left-0 top-0 h-full w-[280px] glass border-r border-white/10 z-50 flex flex-col transition-transform duration-500 lg:translate-x-0 -translate-x-full">
+        <div class="p-8 mb-8 flex items-center justify-between">
             <div class="flex items-center gap-3 text-primary">
                 <span class="material-symbols-outlined text-4xl neon-glow">deployed_code</span>
                 <h2 class="font-display text-2xl font-bold tracking-tighter uppercase">Nexus</h2>
             </div>
+            <button id="close-menu" class="lg:hidden text-slate-400">
+                <span class="material-symbols-outlined">close</span>
+            </button>
         </div>
-        <nav class="flex-1 space-y-1">
+        <nav class="flex-1 space-y-1 overflow-y-auto">
             <div class="px-6 mb-4">
                 <p class="text-[10px] font-bold uppercase tracking-[0.4em] text-slate-500">Navegación_Sistemas</p>
             </div>
             <a class="sidebar-link active" href="index.html">
                 <span class="material-symbols-outlined">grid_view</span>
-                <span class="text-sm font-bold tracking-widest uppercase">Overview</span>
+                <span class="text-sm font-bold tracking-widest uppercase">Catálogo</span>
             </a>
 
             <div class="pt-8 pb-4 px-6">
                 <p class="text-[10px] font-bold uppercase tracking-[0.4em] text-slate-500">Autenticación</p>
             </div>
-            <a class="sidebar-link text-slate-400 hover:text-white" href="login.html">
-                <span class="material-symbols-outlined">login</span>
+            <a class="sidebar-link text-slate-400 hover:text-white transition-colors" href="login.html">
+                <span class="material-symbols-outlined">account_circle</span>
                 <span class="text-sm font-bold tracking-widest uppercase">Identificarse</span>
             </a>
-            <a class="sidebar-link text-slate-400 hover:text-white" href="registro.html">
+            <a class="sidebar-link text-slate-400 hover:text-white transition-colors" href="registro.html">
                 <span class="material-symbols-outlined">person_add</span>
                 <span class="text-sm font-bold tracking-widest uppercase">Registrar_Nodo</span>
             </a>
@@ -51,13 +61,13 @@
             <div class="pt-8 pb-4 px-6">
                 <p class="text-[10px] font-bold uppercase tracking-[0.4em] text-slate-500">Categorías_Base</p>
             </div>
-            <a class="sidebar-link text-slate-400 hover:text-white" href="#">
+            <a class="sidebar-link text-slate-400 hover:text-white transition-colors" href="#">
                 <span class="material-symbols-outlined">bolt</span>
                 <span class="text-sm font-bold tracking-widest uppercase">Hardware</span>
             </a>
-            <a class="sidebar-link text-slate-400 hover:text-white" href="#">
+            <a class="sidebar-link text-slate-400 hover:text-white transition-colors" href="#">
                 <span class="material-symbols-outlined">biotech</span>
-                <span class="text-sm font-bold tracking-widest uppercase">Bio-Tech</span>
+                <span class="text-sm font-bold tracking-widest uppercase">Bio-Tecnología</span>
             </a>
         </nav>
         <div class="p-6">
@@ -71,16 +81,17 @@
         </div>
     </aside>
 
-    <main class="ml-[280px] min-h-screen flex flex-col">
-        <header class="sticky top-0 z-40 glass mx-8 mt-6 mb-8 rounded-2xl px-8 py-4 flex items-center justify-between">
-            <div class="relative w-96">
+    <main class="lg:ml-[280px] min-h-screen flex flex-col transition-all duration-500">
+        <header
+            class="sticky top-0 z-40 glass mx-4 md:mx-8 mt-6 mb-8 rounded-2xl px-4 md:px-8 py-4 flex flex-col md:flex-row items-center justify-between gap-4">
+            <div class="relative w-full md:w-96">
                 <input
                     class="bg-navy/30 border border-white/10 rounded-xl px-6 py-2.5 text-xs tracking-widest focus:ring-1 focus:ring-primary focus:border-primary outline-none w-full placeholder:text-slate-600"
                     id="search-input" placeholder="CONSULTAR_BASE_DATOS..." type="text" />
                 <span
                     class="material-symbols-outlined absolute right-4 top-1/2 -translate-y-1/2 text-slate-500 text-sm">search</span>
             </div>
-            <div class="flex items-center gap-8">
+            <div class="flex items-center gap-4 md:gap-8 w-full md:w-auto justify-between md:justify-end">
                 <div class="flex items-center gap-6 border-r border-white/10 pr-6">
                     <a href="carrito.html" class="relative text-slate-400 hover:text-primary transition-colors">
                         <span class="material-symbols-outlined">shopping_cart</span>
@@ -90,31 +101,34 @@
                     </a>
                 </div>
                 <div class="flex items-center gap-3">
-                    <div class="text-right">
-                        <p class="text-[10px] font-bold text-slate-500 uppercase tracking-widest">Estado_Mente</p>
+                    <div class="text-right hidden sm:block">
+                        <p class="text-[10px] font-bold text-slate-500 uppercase tracking-widest font-mono">
+                            AUTENTICADO_NIVEL_GUEST</p>
                         <p class="text-xs font-bold text-white uppercase" id="user-display">Invitado_G01</p>
                     </div>
-                    <div
-                        class="w-10 h-10 rounded-xl border border-white/10 p-0.5 overflow-hidden flex items-center justify-center bg-white/5">
-                        <span class="material-symbols-outlined text-slate-500">account_circle</span>
+                    <div id="user-avatar"
+                        class="w-10 h-10 rounded-xl border border-white/10 p-0.5 overflow-hidden flex items-center justify-center bg-white/5 group cursor-pointer">
+                        <span
+                            class="material-symbols-outlined text-slate-500 group-hover:text-primary transition-colors">account_circle</span>
                     </div>
                 </div>
             </div>
         </header>
 
-        <div class="px-8 pb-12 flex-1">
-            <div class="relative w-full aspect-[21/7] rounded-3xl overflow-hidden mb-12 border border-white/5">
+        <div class="px-4 md:px-8 pb-12 flex-1">
+            <div
+                class="relative w-full aspect-[21/10] md:aspect-[21/7] rounded-3xl overflow-hidden mb-12 border border-white/5">
                 <div class="absolute inset-0 bg-gradient-to-r from-navy via-deep-slate to-primary/20"></div>
-                <div class="relative h-full flex flex-col justify-center px-16">
+                <div class="relative h-full flex flex-col justify-center px-8 md:px-16">
                     <h1
-                        class="font-display text-5xl lg:text-7xl font-black uppercase leading-none tracking-tighter mb-6">
-                        FUTURE <br />
-                        <span
-                            class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-blue-400">IS_NOW</span>
+                        class="font-display text-4xl sm:text-5xl lg:text-7xl font-black uppercase leading-none tracking-tighter mb-6">
+                        EL FUTURO <br />
+                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-blue-400">ES
+                            AHORA</span>
                     </h1>
                     <div class="flex gap-4">
                         <button
-                            class="px-8 py-4 bg-primary text-navy font-bold uppercase tracking-widest text-xs rounded-xl hover:scale-105 transition-transform">Explorar_Nexus</button>
+                            class="px-8 py-4 bg-primary text-navy font-bold uppercase tracking-widest text-xs rounded-xl hover:scale-105 transition-transform">EXPLORAR_NEXUS</button>
                     </div>
                 </div>
             </div>
@@ -129,17 +143,40 @@
 
         <footer class="mt-auto px-8 py-12 border-t border-white/5 bg-navy/40 backdrop-blur-xl">
             <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
-                <p class="text-[9px] text-slate-600 uppercase tracking-[0.4em]">© 2024 Nexus_Systems // All Protocols
-                    Reserved</p>
+                <p class="text-[9px] text-slate-600 uppercase tracking-[0.4em]">© 2024 Nexus_Systems // Todos los
+                    Protocolos Reservados</p>
                 <div class="flex gap-8 text-[9px] text-slate-600 uppercase tracking-widest">
                     <span>Región: Delta-7</span>
-                    <span>Status: En línea</span>
+                    <span>Estado: En línea</span>
                 </div>
             </div>
         </footer>
     </main>
 
-    <script type="module" src="js/app.js?v=2"></script>
+    <script type="module" src="js/app.js"></script>
+    <script>
+        // Hamburger Menu Logic
+        const menuToggle = document.getElementById('menu-toggle');
+        const closeMenu = document.getElementById('close-menu');
+        const sidebar = document.getElementById('sidebar');
+
+        menuToggle.addEventListener('click', () => {
+            sidebar.classList.remove('-translate-x-full');
+        });
+
+        closeMenu.addEventListener('click', () => {
+            sidebar.classList.add('-translate-x-full');
+        });
+
+        // Close menu on link click (mobile)
+        document.querySelectorAll('.sidebar-link').forEach(link => {
+            link.addEventListener('click', () => {
+                if (window.innerWidth < 1024) {
+                    sidebar.classList.add('-translate-x-full');
+                }
+            });
+        });
+    </script>
 </body>
 
 </html>

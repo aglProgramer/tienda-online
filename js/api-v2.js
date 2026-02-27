@@ -9,16 +9,16 @@ const headers = {
 
 export const api = {
     async getProducts() {
-        console.log("Fetching from table: producto");
+        console.log("Accediendo a tabla: producto...");
         try {
             const response = await fetch(`${SUPABASE_URL}/producto?select=*`, {
                 method: "GET",
                 headers: headers
             });
-            if (!response.ok) throw new Error("Failed to fetch products");
+            if (!response.ok) throw new Error("Error fetching products");
             return await response.json();
         } catch (error) {
-            console.error("Error fetching products:", error);
+            console.error("Error al obtener productos:", error);
             return [];
         }
     },
