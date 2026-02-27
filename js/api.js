@@ -9,6 +9,7 @@ const headers = {
 
 export const api = {
     async getProducts() {
+        console.log("Fetching from table: producto");
         try {
             const response = await fetch(`${SUPABASE_URL}/producto?select=*`, {
                 method: "GET",
@@ -23,6 +24,7 @@ export const api = {
     },
 
     async createClient(clientData) {
+        console.log("Creating in table: cliente");
         try {
             const response = await fetch(`${SUPABASE_URL}/cliente`, {
                 method: "POST",
