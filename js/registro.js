@@ -10,9 +10,10 @@ document.addEventListener('DOMContentLoaded', () => {
         e.preventDefault();
 
         const userData = {
-            nombre: document.getElementById('reg-name').value,
+            nombres: document.getElementById('reg-name').value,
             apellidos: document.getElementById('reg-lastname').value,
             email: document.getElementById('reg-email').value,
+            documento: document.getElementById('reg-document').value,
             telefono: document.getElementById('reg-phone').value,
             direccion: document.getElementById('reg-address').value
         };

@@ -1,5 +1,21 @@
 import { api } from './api.js';
 
+// Session handler
+function checkSession() {
+    const user = JSON.parse(localStorage.getItem('nexus-user'));
+    const userDisplay = document.getElementById('user-display');
+
+    if (user && userDisplay) {
+        userDisplay.innerText = user.nombres;
+        // Optionally change icon or level
+        const levelDisplay = userDisplay.previousElementSibling;
+        if (levelDisplay) {
+            levelDisplay.innerText = 'AUTENTICADO_NIVEL_ALPHA';
+            levelDisplay.classList.add('text-primary');
+        }
+    }
+}
+
 document.addEventListener('DOMContentLoaded', async () => {
     const productContainer = document.getElementById('product-container');
     const cartCount = document.getElementById('cart-count');

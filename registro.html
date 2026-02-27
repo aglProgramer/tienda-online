@@ -72,15 +72,27 @@
                         </div>
                     </div>
 
-                    <div class="flex flex-col gap-2">
-                        <label class="text-slate-300 text-xs font-bold uppercase tracking-widest ml-1">Enlace de
-                            Comunicación (Email)</label>
-                        <div class="group relative">
-                            <span
-                                class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-slate-500 group-focus-within:text-[#00f2ff]">alternate_email</span>
-                            <input id="reg-email" required
-                                class="w-full bg-slate-900/50 border border-slate-700/50 rounded-2xl h-14 pl-12 pr-4 text-white focus:outline-none focus:ring-1 focus:ring-[#00f2ff]/50 transition-all font-mono text-sm"
-                                placeholder="COMM_LINK@SECURE.SYS" type="email" />
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div class="flex flex-col gap-2">
+                            <label class="text-slate-300 text-xs font-bold uppercase tracking-widest ml-1">Email</label>
+                            <div class="group relative">
+                                <span
+                                    class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-slate-500 group-focus-within:text-[#00f2ff]">alternate_email</span>
+                                <input id="reg-email" required
+                                    class="w-full bg-slate-900/50 border border-slate-700/50 rounded-2xl h-14 pl-12 pr-4 text-white focus:outline-none focus:ring-1 focus:ring-[#00f2ff]/50 transition-all font-mono text-sm"
+                                    placeholder="COMM_LINK@SECURE.SYS" type="email" />
+                            </div>
+                        </div>
+                        <div class="flex flex-col gap-2">
+                            <label class="text-slate-300 text-xs font-bold uppercase tracking-widest ml-1">Documento
+                                (DNI/ID)</label>
+                            <div class="group relative">
+                                <span
+                                    class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-slate-500 group-focus-within:text-[#00f2ff]">badge</span>
+                                <input id="reg-document" required
+                                    class="w-full bg-slate-900/50 border border-slate-700/50 rounded-2xl h-14 pl-12 pr-4 text-white focus:outline-none focus:ring-1 focus:ring-[#00f2ff]/50 transition-all font-mono text-sm"
+                                    placeholder="ID_NUM_000" type="text" />
+                            </div>
                         </div>
                     </div>
 

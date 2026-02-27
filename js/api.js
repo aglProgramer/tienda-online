@@ -33,9 +33,10 @@ export const api = {
                     "Prefer": "return=representation"
                 },
                 body: JSON.stringify({
-                    nombre: clientData.nombre,
+                    nombres: clientData.nombres,
                     apellidos: clientData.apellidos,
                     email: clientData.email,
+                    documento: clientData.documento,
                     telefono: clientData.telefono,
                     direccion: clientData.direccion
                 })
