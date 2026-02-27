@@ -46,55 +46,70 @@
                     <p class="text-slate-400 text-lg font-light">Crea tu identidad digital para el próximo nivel.</p>
                 </div>
 
-                <form class="flex flex-col gap-6">
-                    <div class="flex flex-col gap-2">
-                        <label class="text-slate-300 text-xs font-bold uppercase tracking-widest ml-1">Nombre de
-                            Operador</label>
-                        <div class="group relative">
-                            <span
-                                class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-slate-500 group-focus-within:text-[#00f2ff]">person</span>
-                            <input
-                                class="w-full bg-slate-900/50 border border-slate-700/50 rounded-2xl h-14 pl-12 pr-4 text-white focus:outline-none focus:ring-1 focus:ring-[#00f2ff]/50 transition-all"
-                                placeholder="Nombre completo" type="text" />
-                        </div>
-                    </div>
-                    <div class="flex flex-col gap-2">
-                        <label class="text-slate-300 text-xs font-bold uppercase tracking-widest ml-1">Enlace de
-                            Comunicación</label>
-                        <div class="group relative">
-                            <span
-                                class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-slate-500 group-focus-within:text-[#00f2ff]">alternate_email</span>
-                            <input
-                                class="w-full bg-slate-900/50 border border-slate-700/50 rounded-2xl h-14 pl-12 pr-4 text-white focus:outline-none focus:ring-1 focus:ring-[#00f2ff]/50 transition-all"
-                                placeholder="correo@ejemplo.com" type="email" />
-                        </div>
-                    </div>
+                <form id="registration-form" class="flex flex-col gap-6">
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div class="flex flex-col gap-2">
-                            <label class="text-slate-300 text-xs font-bold uppercase tracking-widest ml-1">Clave de
-                                Acceso</label>
+                            <label
+                                class="text-slate-300 text-xs font-bold uppercase tracking-widest ml-1">Nombres</label>
                             <div class="group relative">
                                 <span
-                                    class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-slate-500 group-focus-within:text-[#00f2ff]">lock</span>
-                                <input
-                                    class="w-full bg-slate-900/50 border border-slate-700/50 rounded-2xl h-14 pl-12 pr-4 text-white focus:outline-none focus:ring-1 focus:ring-[#00f2ff]/50 transition-all"
-                                    placeholder="••••••••" type="password" />
+                                    class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-slate-500 group-focus-within:text-[#00f2ff]">person</span>
+                                <input id="reg-name" required
+                                    class="w-full bg-slate-900/50 border border-slate-700/50 rounded-2xl h-14 pl-12 pr-4 text-white focus:outline-none focus:ring-1 focus:ring-[#00f2ff]/50 transition-all font-mono text-sm"
+                                    placeholder="ID_ALPHA" type="text" />
                             </div>
                         </div>
                         <div class="flex flex-col gap-2">
                             <label
-                                class="text-slate-300 text-xs font-bold uppercase tracking-widest ml-1">Verificación</label>
+                                class="text-slate-300 text-xs font-bold uppercase tracking-widest ml-1">Apellidos</label>
                             <div class="group relative">
                                 <span
-                                    class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-slate-500 group-focus-within:text-[#00f2ff]">shield_lock</span>
-                                <input
-                                    class="w-full bg-slate-900/50 border border-slate-700/50 rounded-2xl h-14 pl-12 pr-4 text-white focus:outline-none focus:ring-1 focus:ring-[#00f2ff]/50 transition-all"
-                                    placeholder="••••••••" type="password" />
+                                    class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-slate-500 group-focus-within:text-[#00f2ff]">person</span>
+                                <input id="reg-lastname" required
+                                    class="w-full bg-slate-900/50 border border-slate-700/50 rounded-2xl h-14 pl-12 pr-4 text-white focus:outline-none focus:ring-1 focus:ring-[#00f2ff]/50 transition-all font-mono text-sm"
+                                    placeholder="SUBORDINATE_NAME" type="text" />
                             </div>
                         </div>
                     </div>
 
-                    <button
+                    <div class="flex flex-col gap-2">
+                        <label class="text-slate-300 text-xs font-bold uppercase tracking-widest ml-1">Enlace de
+                            Comunicación (Email)</label>
+                        <div class="group relative">
+                            <span
+                                class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-slate-500 group-focus-within:text-[#00f2ff]">alternate_email</span>
+                            <input id="reg-email" required
+                                class="w-full bg-slate-900/50 border border-slate-700/50 rounded-2xl h-14 pl-12 pr-4 text-white focus:outline-none focus:ring-1 focus:ring-[#00f2ff]/50 transition-all font-mono text-sm"
+                                placeholder="COMM_LINK@SECURE.SYS" type="email" />
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div class="flex flex-col gap-2">
+                            <label
+                                class="text-slate-300 text-xs font-bold uppercase tracking-widest ml-1">Teléfono</label>
+                            <div class="group relative">
+                                <span
+                                    class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-slate-500 group-focus-within:text-[#00f2ff]">call</span>
+                                <input id="reg-phone" required
+                                    class="w-full bg-slate-900/50 border border-slate-700/50 rounded-2xl h-14 pl-12 pr-4 text-white focus:outline-none focus:ring-1 focus:ring-[#00f2ff]/50 transition-all font-mono text-sm"
+                                    placeholder="+00 000 0000" type="tel" />
+                            </div>
+                        </div>
+                        <div class="flex flex-col gap-2">
+                            <label class="text-slate-300 text-xs font-bold uppercase tracking-widest ml-1">Dirección
+                                Física</label>
+                            <div class="group relative">
+                                <span
+                                    class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-slate-500 group-focus-within:text-[#00f2ff]">location_on</span>
+                                <input id="reg-address" required
+                                    class="w-full bg-slate-900/50 border border-slate-700/50 rounded-2xl h-14 pl-12 pr-4 text-white focus:outline-none focus:ring-1 focus:ring-[#00f2ff]/50 transition-all font-mono text-sm"
+                                    placeholder="GRID_COORDINATES" type="text" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <button id="reg-submit-btn"
                         class="neon-pulse w-full bg-[#00f2ff] text-[#020617] h-14 rounded-2xl text-base font-black uppercase tracking-[0.2em] hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center justify-center gap-2 group"
                         type="submit">
                         Inicializar Registro
@@ -102,6 +117,10 @@
                             class="material-symbols-outlined text-xl group-hover:translate-x-1 transition-transform">arrow_forward</span>
                     </button>
                 </form>
+
+                <div id="reg-status" class="hidden mt-6 p-4 rounded-xl border border-white/10 glass text-center">
+                    <p id="reg-status-text" class="text-xs font-bold uppercase tracking-widest text-[#00f2ff]"></p>
+                </div>
 
                 <div class="mt-10 pt-8 border-t border-slate-800/50 text-center">
                     <p class="text-slate-500 text-sm font-medium">
@@ -114,6 +133,7 @@
             </div>
         </main>
     </div>
+    <script type="module" src="js/registro.js"></script>
 </body>
 
 </html>
