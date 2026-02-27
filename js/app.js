@@ -46,9 +46,19 @@ document.addEventListener('DOMContentLoaded', async () => {
                         </div>
                         ${index % 3 === 0 ? `
                         <div class="w-2/5 relative flex items-center justify-center">
-                            <img src="${product.imagen || 'https://via.placeholder.com/200'}" alt="${product.nombre}" class="w-full h-auto object-contain z-10 group-hover:scale-105 transition-transform">
+                            <img src="${product.imagen || 'https://placehold.jp/38bdf8/020617/400x400.png?text=NEXUS'}" 
+                                 alt="${product.nombre}" 
+                                 onerror="this.src='https://placehold.jp/38bdf8/020617/400x400.png?text=IMAGE_NOT_FOUND'"
+                                 class="w-full h-auto object-contain z-10 group-hover:scale-105 transition-transform">
                             <div class="absolute inset-0 bg-primary/10 blur-[60px] rounded-full"></div>
-                        </div>` : ''}
+                        </div>` : `
+                        <div class="w-full h-32 relative mt-4">
+                            <img src="${product.imagen || 'https://placehold.jp/38bdf8/020617/400x400.png?text=NEXUS'}" 
+                                 alt="${product.nombre}"
+                                 onerror="this.src='https://placehold.jp/38bdf8/020617/400x400.png?text=IMAGE_NOT_FOUND'"
+                                 class="w-full h-full object-contain">
+                        </div>
+                        `}
                     </div>
                 </div>
             `;
