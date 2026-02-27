@@ -14,8 +14,8 @@
 
 <body class="bg-[#020617] font-sans text-slate-100 overflow-x-hidden min-h-screen">
     <div class="fixed inset-0 overflow-hidden pointer-events-none">
-        <div class="abstract-shape w-[500px] h-[500px] bg-[#00f2ff] rounded-full -top-48 -right-24 opacity-20"></div>
-        <div class="abstract-shape w-[600px] h-[600px] bg-[#7000ff] rounded-full -bottom-48 -left-24 opacity-20"></div>
+        <div class="abstract-shape w-[500px] h-[500px] bg-[#00f2ff] rounded-full -top-48 -left-24"></div>
+        <div class="abstract-shape w-[600px] h-[600px] bg-[#7000ff] rounded-full -bottom-48 -right-24"></div>
         <div
             class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-10">
         </div>
@@ -49,26 +49,26 @@
 
                 <form id="login-form" class="flex flex-col gap-8">
                     <div class="flex flex-col gap-2">
-                        <label class="text-slate-300 text-xs font-bold uppercase tracking-[0.3em] ml-1">Identidad
-                            Digital (Email)</label>
+                        <label class="text-slate-300 text-xs font-bold uppercase tracking-[0.3em] ml-1">Correo
+                            Electrónico (Usuario)</label>
                         <div class="group relative">
                             <span
                                 class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-slate-500 group-focus-within:text-[#00f2ff]">alternate_email</span>
                             <input id="login-email" required
                                 class="w-full bg-slate-900/50 border border-slate-700/50 rounded-2xl h-14 pl-12 pr-4 text-white focus:outline-none focus:ring-1 focus:ring-[#00f2ff]/50 transition-all font-mono text-sm"
-                                placeholder="ID@SECURE.SYS" type="email" />
+                                placeholder="usuario@ejemplo.com" type="email" />
                         </div>
                     </div>
 
                     <div class="flex flex-col gap-2">
-                        <label class="text-slate-300 text-xs font-bold uppercase tracking-[0.3em] ml-1">Clave de Acceso
-                            (Documento)</label>
+                        <label class="text-slate-300 text-xs font-bold uppercase tracking-[0.3em] ml-1">Documento de
+                            Identidad (Contraseña)</label>
                         <div class="group relative">
                             <span
                                 class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-slate-500 group-focus-within:text-[#00f2ff]">shield_lock</span>
                             <input id="login-document" required
                                 class="w-full bg-slate-900/50 border border-slate-700/50 rounded-2xl h-14 pl-12 pr-4 text-white focus:outline-none focus:ring-1 focus:ring-[#00f2ff]/50 transition-all font-mono text-sm"
-                                placeholder="NUM_ID_KEY" type="password" />
+                                placeholder="Ingresa tu DNI / ID" type="password" />
                         </div>
                     </div>
 
