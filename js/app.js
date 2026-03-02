@@ -40,9 +40,17 @@ document.addEventListener('DOMContentLoaded', async () => {
         }
 
         productContainer.innerHTML = products.map((product, index) => {
+            // Determine generic image based on type
+            let imageUrl = product.imagen_url;
+            if (!imageUrl || imageUrl.includes('placehold.jp')) {
+                const type = parseInt(product.id_tipo_producto);
+                if (type === 1) imageUrl = 'assets/imágenes/hardware.png';
+                else if (type === 2) imageUrl = 'assets/imágenes/biotech.png';
+                else imageUrl = 'assets/imágenes/nexus_unit.png';
+            }
+
             // Determine grid span for asymmetry
             const spanClass = index % 3 === 0 ? 'md:col-span-8 col-span-12' : 'md:col-span-4 col-span-12';
-            const imageUrl = product.imagen_url || 'https://placehold.jp/38bdf8/020617/400x400.png?text=NEXUS_UNIT';
 
             return `
                 <div class="${spanClass} glass-card rounded-3xl overflow-hidden relative p-8 group h-full flex flex-col">
