@@ -1,4 +1,4 @@
-import { api } from './api-v2.js';
+import { api } from './api.js';
 
 document.addEventListener('DOMContentLoaded', () => {
     const form = document.getElementById('registration-form');
@@ -10,13 +10,28 @@ document.addEventListener('DOMContentLoaded', () => {
         e.preventDefault();
 
         const userData = {
-            nombres: document.getElementById('reg-name').value,
-            apellidos: document.getElementById('reg-lastname').value,
-            email: document.getElementById('reg-email').value,
-            documento: document.getElementById('reg-document').value,
-            telefono: document.getElementById('reg-phone').value,
-            direccion: document.getElementById('reg-address').value
+            nombres: document.getElementById('reg-name').value.trim(),
+            apellidos: document.getElementById('reg-lastname').value.trim(),
+            email: document.getElementById('reg-email').value.trim(),
+            documento: document.getElementById('reg-document').value.trim(),
+            telefono: document.getElementById('reg-phone').value.trim(),
+            direccion: document.getElementById('reg-address').value.trim()
         };
+
+        // Basic validation
+        if (!userData.email.includes('@')) {
+            statusDiv.classList.remove('hidden');
+            statusText.innerText = 'ERROR: EMAIL INVÁLIDO';
+            statusText.classList.add('text-red-500');
+            return;
+        }
+
+        if (userData.telefono.length < 7) {
+            statusDiv.classList.remove('hidden');
+            statusText.innerText = 'ERROR: TELÉFONO DEMASIADO CORTO';
+            statusText.classList.add('text-red-500');
+            return;
+        }
 
         // UI state: Processing
         submitBtn.disabled = true;

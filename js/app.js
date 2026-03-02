@@ -1,4 +1,4 @@
-import { api } from './api-v2.js';
+import { api } from './api.js';
 
 // Session handler
 function checkSession() {

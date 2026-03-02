@@ -1,4 +1,4 @@
-import { api } from './api-v2.js';
+import { api } from './api.js';
 
 document.addEventListener('DOMContentLoaded', () => {
     const cartItemsContainer = document.getElementById('cart-items-container');
@@ -192,5 +192,4 @@ document.addEventListener('DOMContentLoaded', () => {
 
 statusClose.addEventListener('click', () => {
     window.location.href = 'index.html';
-});
 });

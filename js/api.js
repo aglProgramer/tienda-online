@@ -41,7 +41,10 @@ export const api = {
                     direccion: clientData.direccion
                 })
             });
-            if (!response.ok) throw new Error("Failed to create client");
+            if (!response.ok) {
+                const errorData = await response.json();
+                throw new Error(errorData.message || "Failed to create client");
+            }
             const result = await response.json();
             return result[0];
         } catch (error) {
