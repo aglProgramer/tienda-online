@@ -69,17 +69,17 @@ document.addEventListener('DOMContentLoaded', async () => {
                         
                         <div class="${index % 3 === 0 ? 'md:w-3/5 w-full' : 'w-full'} flex flex-col z-10">
                             <div class="flex items-center gap-3 mb-6">
-                                <span class="bg-indigo-600/10 text-indigo-400 text-[10px] font-black px-3 py-1 rounded-lg border border-indigo-500/20 uppercase tracking-[0.2em] font-mono">UNIT_${product.id_producto.toString().padStart(3, '0')}</span>
+                                <span class="card-tag bg-indigo-600/10 px-3 py-1 rounded-lg border border-indigo-500/20 font-mono">UNIT_${product.id_producto.toString().padStart(3, '0')}</span>
                                 <span class="w-1.5 h-1.5 rounded-full bg-indigo-500 animate-pulse"></span>
                             </div>
                             
-                            <h3 class="text-2xl md:text-3xl font-black mb-4 uppercase leading-tight tracking-tight text-white group-hover:text-indigo-400 transition-colors">${product.nombre}</h3>
-                            <p class="text-slate-400 text-sm mb-10 max-w-sm line-clamp-2 font-medium leading-relaxed opacity-80">${product.descripcion || 'Hardware de última generación optimizado para el Nexus Core.'}</p>
+                            <h3 class="card-title mb-4 group-hover:text-indigo-400 transition-colors">${product.nombre}</h3>
+                            <p class="card-subtitle mb-10 max-w-sm line-clamp-2">${product.descripcion || 'Hardware de última generación optimizado para el Nexus Core.'}</p>
                             
                             <div class="mt-auto flex items-center justify-between gap-4">
                                 <div class="flex flex-col">
-                                    <span class="text-[9px] uppercase tracking-[0.3em] text-slate-500 font-black mb-1">Carga_Creditos</span>
-                                    <span class="text-3xl font-black text-white">$${product.precio.toLocaleString()}</span>
+                                    <span class="sidebar-title mb-1">Carga_Creditos</span>
+                                    <span class="card-price">$${product.precio.toLocaleString()}</span>
                                 </div>
                                 <button class="add-to-cart group/btn relative overflow-hidden px-8 py-4 bg-indigo-600 text-white text-[10px] font-black uppercase tracking-[0.2em] rounded-xl hover:shadow-[0_0_40px_rgba(99,102,241,0.4)] transition-all active:scale-95" 
                                         data-id="${product.id_producto}" 
