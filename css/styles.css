@@ -129,12 +129,16 @@
 /* Sidebar */
 
 .sidebar-link {
-    @apply flex items-center gap-3 px-6 py-3 w-full transition-all duration-300 relative rounded-lg;
+    @apply flex items-center gap-3 px-6 py-3 w-full whitespace-nowrap transition-all duration-300 relative rounded-lg;
 }
 
 .sidebar-link::before {
     content: "";
     @apply absolute left-0 top-0 w-1 h-full bg-indigo-500 opacity-0 transition-all;
+}
+
+.sidebar-link:hover {
+    @apply bg-white/5 text-primary;
 }
 
 .sidebar-link:hover::before {
@@ -172,7 +176,7 @@
 }
 
 .sidebar-category {
-    @apply sidebar-title px-6 pt-8 pb-2;
+    @apply sidebar-title px-6 pt-6 pb-2;
 }
 
 .hero-title {
