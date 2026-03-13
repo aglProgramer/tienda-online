@@ -25,6 +25,10 @@ function checkSession() {
 document.addEventListener('DOMContentLoaded', async () => {
     const productContainer = document.getElementById('product-container');
     const cartCount = document.getElementById('cart-count');
+    const searchInput = document.getElementById('search-input');
+    const categoryLinks = document.querySelectorAll('.category-link');
+    let allProducts = [];
+    let currentCategory = 'all';
 
     // Initialize cart count
     updateCartCount();
@@ -32,12 +36,38 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     // Fetch and render products
     try {
-        const products = await api.getProducts();
-        renderProducts(products);
+        allProducts = await api.getProducts();
+        renderProducts(allProducts);
     } catch (error) {
         console.error("Initialization error:", error);
         productContainer.innerHTML = `<div class="col-span-12 text-center text-red-400 uppercase tracking-widest py-10">Error de Enlace: No se pudo conectar con Nexus Core</div>`;
     }
+
+    function filterProducts() {
+        const query = searchInput.value.toLowerCase();
+        const filtered = allProducts.filter(p => {
+            const matchesSearch = p.nombre.toLowerCase().includes(query) || p.descripcion?.toLowerCase().includes(query);
+            const matchesCategory = currentCategory === 'all' || p.categoria === currentCategory;
+            return matchesSearch && matchesCategory;
+        });
+        renderProducts(filtered);
+    }
+
+    if (searchInput) {
+        searchInput.addEventListener('input', filterProducts);
+    }
+
+    categoryLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            // Toggle active state
+            categoryLinks.forEach(l => l.classList.remove('active', '!text-primary'));
+            link.classList.add('active', '!text-primary');
+
+            currentCategory = link.dataset.category;
+            filterProducts();
+        });
+    });
 
     function renderProducts(products) {
         if (!products || products.length === 0) {
