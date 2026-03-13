@@ -28,10 +28,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (cart.length === 0) {
             cartItemsContainer.innerHTML = `
-                <div class="glass p-12 rounded-3xl text-center">
+                <div class="glass p-12 rounded-3xl text-center border-white/5">
                     <span class="material-symbols-outlined text-6xl text-slate-700 mb-6 font-mono">database_off</span>
-                    <p class="text-slate-500 uppercase tracking-[0.3em] font-mono">CONEXIÓN PERDIDA: Carrito Vacío</p>
-                    <a href="index.html" class="inline-block mt-8 px-6 py-3 border border-primary text-primary text-xs font-bold uppercase rounded-xl hover:bg-primary hover:text-navy transition-all font-mono">Volver al Catálogo</a>
+                    <p class="text-slate-500 uppercase tracking-[0.3em] font-mono text-[10px]">CONEXIÓN PERDIDA: Carrito Vacío</p>
+                    <a href="index.html" class="inline-block mt-8 px-6 py-3 border border-indigo-600 text-indigo-400 text-[10px] font-black uppercase rounded-xl hover:bg-indigo-600 hover:text-white transition-all font-mono tracking-widest">Volver al Catálogo</a>
                 </div>
             `;
             updateTotals(0);
@@ -43,31 +43,31 @@ document.addEventListener('DOMContentLoaded', () => {
             const itemTotal = item.precio * item.cantidad;
             subtotal += itemTotal;
             return `
-                <div class="glass group relative overflow-hidden rounded-3xl p-6 transition-all duration-500 hover:translate-x-1 border border-white/5">
+                <div class="glass group relative overflow-hidden rounded-3xl p-6 transition-all duration-500 hover:translate-x-1 border border-white/5 h-full">
                     <div class="flex flex-col sm:flex-row items-center gap-6">
-                        <div class="relative size-24 shrink-0">
-                            <img src="${item.imagen}" alt="${item.nombre}" class="relative z-10 w-full h-full object-contain rounded-2xl">
-                            <div class="absolute inset-0 bg-primary/10 blur-xl"></div>
+                        <div class="relative size-24 shrink-0 bg-navy/50 rounded-2xl flex items-center justify-center border border-white/5">
+                            <img src="${item.imagen}" alt="${item.nombre}" class="relative z-10 w-full h-full object-contain p-2 drop-shadow-[0_0_15px_rgba(99,102,241,0.2)]">
+                            <div class="absolute inset-0 bg-indigo-600/10 blur-xl opacity-0 group-hover:opacity-100 transition-opacity"></div>
                         </div>
                         <div class="flex-1 w-full">
                             <div class="flex justify-between items-start mb-2">
                                 <div>
-                                    <p class="text-[9px] font-bold text-primary uppercase tracking-widest mb-1 font-mono">PROTOCOLO_UNIT: ${item.id}</p>
-                                    <h3 class="text-xl font-bold text-white uppercase">${item.nombre}</h3>
+                                    <p class="text-[9px] font-black text-indigo-400 uppercase tracking-[0.2em] mb-1 font-mono">PROTOCOLO_UNIT: ${item.id}</p>
+                                    <h3 class="text-xl font-black text-white uppercase tracking-tight">${item.nombre}</h3>
                                 </div>
-                                <p class="text-xl font-black text-white">$${itemTotal.toFixed(2)}</p>
+                                <p class="text-xl font-black text-white tracking-tighter">$${itemTotal.toLocaleString()}</p>
                             </div>
                             <div class="flex flex-wrap items-center gap-6 mt-4">
                                 <div class="flex items-center bg-white/5 rounded-xl p-1 border border-white/10">
-                                    <button class="qty-btn size-8 flex items-center justify-center hover:text-primary transition-colors" data-id="${item.id}" data-action="dec">
+                                    <button class="qty-btn size-8 flex items-center justify-center hover:text-indigo-400 transition-colors" data-id="${item.id}" data-action="dec">
                                         <span class="material-symbols-outlined text-sm">remove</span>
                                     </button>
-                                    <span class="px-3 text-xs font-bold w-12 text-center font-mono">${item.cantidad.toString().padStart(2, '0')}</span>
-                                    <button class="qty-btn size-8 flex items-center justify-center hover:text-primary transition-colors" data-id="${item.id}" data-action="inc">
+                                    <span class="px-3 text-xs font-black w-12 text-center font-mono">${item.cantidad.toString().padStart(2, '0')}</span>
+                                    <button class="qty-btn size-8 flex items-center justify-center hover:text-indigo-400 transition-colors" data-id="${item.id}" data-action="inc">
                                         <span class="material-symbols-outlined text-sm">add</span>
                                     </button>
                                 </div>
-                                <button class="remove-btn flex items-center gap-2 text-[10px] font-bold text-slate-500 hover:text-red-400 transition-colors uppercase tracking-widest font-mono" data-id="${item.id}">
+                                <button class="remove-btn flex items-center gap-2 text-[10px] font-black text-slate-500 hover:text-rose-400 transition-colors uppercase tracking-[0.2em] font-mono" data-id="${item.id}">
                                     <span class="material-symbols-outlined text-base">delete</span> ELIMINAR_NODO
                                 </button>
                             </div>
@@ -137,7 +137,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Processing...
         statusOverlay.classList.remove('hidden');
-        statusIcon.innerHTML = `<span class="material-symbols-outlined text-primary text-4xl animate-spin">sync</span>`;
+        statusIcon.innerHTML = `<span class="material-symbols-outlined text-indigo-400 text-4xl animate-spin">sync</span>`;
         statusTitle.innerText = "Procesando Protocolo";
         statusMsg.innerText = "Sincronizando con los nodos de la red Nexus...";
 

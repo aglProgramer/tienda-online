@@ -6,8 +6,22 @@
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <title>Nexus Panel - Administración Central</title>
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#6366f1',
+                        secondary: '#06b6d4',
+                        navy: '#020617',
+                        'deep-slate': '#0f172a',
+                    }
+                }
+            }
+        }
+    </script>
     <link
-        href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&family=Syncopate:wght@400;700&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300..800&family=Space+Grotesk:wght@300..700&display=swap"
         rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
         rel="stylesheet" />
@@ -17,11 +31,13 @@
             --admin-gold: #fbbf24;
             --admin-red: #ef4444;
         }
+
         .admin-glass {
             background: rgba(15, 23, 42, 0.8);
             backdrop-filter: blur(30px);
             border: 1px solid rgba(251, 191, 36, 0.1);
         }
+
         .admin-card {
             background: linear-gradient(135deg, rgba(251, 191, 36, 0.05), rgba(15, 23, 42, 0.2));
             border: 1px solid rgba(251, 191, 36, 0.1);
@@ -29,7 +45,8 @@
     </style>
 </head>
 
-<body class="bg-[#020617] text-slate-100 font-['Space_Grotesk'] overflow-x-hidden selection:bg-amber-400 selection:text-navy">
+<body
+    class="bg-[#020617] text-slate-100 font-['Space_Grotesk'] overflow-x-hidden selection:bg-amber-400 selection:text-navy">
     <div class="fixed inset-0 bg-[radial-gradient(circle_at_80%_20%,#1e1b4b_0%,#020617_100%)] -z-20"></div>
 
     <div class="flex min-h-screen">
@@ -39,28 +56,34 @@
                 <span class="material-symbols-outlined text-4xl">shield_person</span>
                 <h2 class="font-display text-xl font-bold tracking-tighter uppercase">Nexus_Admin</h2>
             </div>
-            
+
             <nav class="flex-1 space-y-2">
-                <a href="#" class="flex items-center gap-4 px-4 py-3 rounded-xl bg-amber-400/10 text-amber-400 font-bold">
+                <a href="#"
+                    class="flex items-center gap-4 px-4 py-3 rounded-xl bg-amber-400/10 text-amber-400 font-bold">
                     <span class="material-symbols-outlined">dashboard</span>
                     <span class="text-xs uppercase tracking-widest">Dashboard</span>
                 </a>
-                <a href="index.html" class="flex items-center gap-4 px-4 py-3 rounded-xl text-slate-400 hover:bg-white/5 hover:text-white transition-all">
+                <a href="index.html"
+                    class="flex items-center gap-4 px-4 py-3 rounded-xl text-slate-400 hover:bg-white/5 hover:text-white transition-all">
                     <span class="material-symbols-outlined">storefront</span>
                     <span class="text-xs uppercase tracking-widest">Ver Tienda</span>
                 </a>
-                <a href="#" class="flex items-center gap-4 px-4 py-3 rounded-xl text-slate-400 hover:bg-white/5 hover:text-white transition-all">
+                <a href="#"
+                    class="flex items-center gap-4 px-4 py-3 rounded-xl text-slate-400 hover:bg-white/5 hover:text-white transition-all">
                     <span class="material-symbols-outlined">inventory_2</span>
                     <span class="text-xs uppercase tracking-widest">Inventario</span>
                 </a>
-                <a href="#" class="flex items-center gap-4 px-4 py-3 rounded-xl text-slate-400 hover:bg-white/5 hover:text-white transition-all">
+                <a href="#"
+                    class="flex items-center gap-4 px-4 py-3 rounded-xl text-slate-400 hover:bg-white/5 hover:text-white transition-all">
                     <span class="material-symbols-outlined">analytics</span>
                     <span class="text-xs uppercase tracking-widest">Reportes</span>
                 </a>
             </nav>
 
             <div class="mt-auto pt-6 border-t border-white/5">
-                <button id="logout-btn" class="w-full py-3 bg-red-500/10 text-red-400 text-[10px] font-bold uppercase tracking-widest rounded-lg border border-red-500/20 hover:bg-red-500 hover:text-white transition-all">Cerrar Sesión</button>
+                <button id="logout-btn"
+                    class="w-full py-3 bg-red-500/10 text-red-400 text-[10px] font-bold uppercase tracking-widest rounded-lg border border-red-500/20 hover:bg-red-500 hover:text-white transition-all">Cerrar
+                    Sesión</button>
             </div>
         </aside>
 
@@ -68,8 +91,10 @@
         <main class="flex-1 p-8 md:p-12">
             <header class="flex justify-between items-center mb-12">
                 <div>
-                    <h1 class="text-4xl font-display font-black text-white uppercase tracking-tighter">Terminal de Control</h1>
-                    <p class="text-slate-500 text-xs mt-2 uppercase tracking-[0.3em]">Estado del Sistema: <span class="text-emerald-400">OPERATIVO // NIVEL_ADMIN</span></p>
+                    <h1 class="text-4xl font-display font-black text-white uppercase tracking-tighter">Terminal de
+                        Control</h1>
+                    <p class="text-slate-500 text-xs mt-2 uppercase tracking-[0.3em]">Estado del Sistema: <span
+                            class="text-emerald-400">OPERATIVO // NIVEL_ADMIN</span></p>
                 </div>
                 <div class="flex items-center gap-4">
                     <div class="text-right">
@@ -140,7 +165,8 @@
                                 <p class="text-[9px] text-emerald-400 font-bold uppercase">Completado</p>
                             </div>
                         </div>
-                        <div class="flex items-center justify-between p-4 rounded-xl bg-white/5 border border-white/5 opacity-50">
+                        <div
+                            class="flex items-center justify-between p-4 rounded-xl bg-white/5 border border-white/5 opacity-50">
                             <div class="flex items-center gap-4">
                                 <div class="w-10 h-10 rounded-lg bg-amber-400/10 flex items-center justify-center">
                                     <span class="material-symbols-outlined text-amber-400">smartphone</span>
@@ -157,11 +183,12 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <div class="admin-glass rounded-3xl p-8 border border-white/5">
                     <h4 class="text-sm font-bold uppercase tracking-[0.2em] text-white mb-8">Actividad del Nodo</h4>
                     <div class="relative h-64 flex items-center justify-center border-b border-white/5 mb-6">
-                        <div class="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-amber-400/10 to-transparent"></div>
+                        <div class="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-amber-400/10 to-transparent">
+                        </div>
                         <span class="text-slate-600 font-mono text-[10px] uppercase">[Gráfico Simulado]</span>
                     </div>
                     <div class="space-y-4">

@@ -6,18 +6,32 @@
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <title>Acceso Premium Tech - TechCore</title>
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#6366f1',
+                        secondary: '#06b6d4',
+                        navy: '#020617',
+                        'deep-slate': '#0f172a',
+                    }
+                }
+            }
+        }
+    </script>
     <link
-        href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300..800&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
         rel="stylesheet" />
     <link rel="stylesheet" href="css/styles.css">
 </head>
 
 <body class="bg-[#020617] font-sans text-slate-100 overflow-x-hidden min-h-screen">
     <div class="fixed inset-0 overflow-hidden pointer-events-none">
-        <div class="abstract-shape w-[500px] h-[500px] bg-[#00f2ff] rounded-full -top-48 -left-24"></div>
-        <div class="abstract-shape w-[600px] h-[600px] bg-[#7000ff] rounded-full -bottom-48 -right-24"></div>
+        <div class="abstract-shape w-[500px] h-[500px] bg-indigo-600/20 rounded-full -top-48 -left-24 blur-3xl"></div>
+        <div class="abstract-shape w-[600px] h-[600px] bg-cyan-500/10 rounded-full -bottom-48 -right-24 blur-3xl"></div>
         <div
-            class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-10">
+            class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-5">
         </div>
     </div>
 
@@ -25,10 +39,10 @@
         <header class="flex items-center justify-between px-8 py-6 bg-transparent">
             <a href="index.html" class="flex items-center gap-2 hover:opacity-80 transition-opacity">
                 <div
-                    class="size-10 bg-gradient-to-br from-[#00f2ff] to-[#7000ff] rounded-xl flex items-center justify-center">
-                    <span class="material-symbols-outlined text-black font-bold">rocket_launch</span>
+                    class="size-10 bg-gradient-to-br from-indigo-500 to-cyan-400 rounded-xl flex items-center justify-center shadow-lg shadow-indigo-500/20">
+                    <span class="material-symbols-outlined text-white font-bold">deployed_code</span>
                 </div>
-                <h2 class="text-white text-2xl font-extrabold tracking-tighter">VANGUARD</h2>
+                <h2 class="text-white text-2xl font-black tracking-tighter">NEXUS</h2>
             </a>
             <a href="registro.html"
                 class="px-5 py-2 rounded-full border border-slate-700 text-sm font-semibold hover:bg-slate-800 transition-all font-mono tracking-tighter">
@@ -53,7 +67,7 @@
                             Electrónico (Usuario)</label>
                         <div class="group relative">
                             <span
-                                class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-slate-500 group-focus-within:text-[#00f2ff]">alternate_email</span>
+                                class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-slate-500 group-focus-within:text-indigo-400">alternate_email</span>
                             <input id="login-email" required
                                 class="w-full bg-slate-900/50 border border-slate-700/50 rounded-2xl h-14 pl-12 pr-4 text-white focus:outline-none focus:ring-1 focus:ring-[#00f2ff]/50 transition-all font-mono text-sm"
                                 placeholder="usuario@ejemplo.com" type="email" />
@@ -65,7 +79,7 @@
                             Identidad (Contraseña)</label>
                         <div class="group relative">
                             <span
-                                class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-slate-500 group-focus-within:text-[#00f2ff]">shield_lock</span>
+                                class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-slate-500 group-focus-within:text-indigo-400">shield_lock</span>
                             <input id="login-document" required
                                 class="w-full bg-slate-900/50 border border-slate-700/50 rounded-2xl h-14 pl-12 pr-4 text-white focus:outline-none focus:ring-1 focus:ring-[#00f2ff]/50 transition-all font-mono text-sm"
                                 placeholder="Ingresa tu DNI / ID" type="password" />
@@ -73,7 +87,7 @@
                     </div>
 
                     <button id="login-btn"
-                        class="neon-pulse w-full bg-[#00f2ff] text-[#020617] h-14 rounded-2xl text-base font-black uppercase tracking-[0.2em] hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center justify-center gap-2 group"
+                        class="neon-pulse w-full bg-indigo-600 text-white h-14 rounded-2xl text-base font-black uppercase tracking-[0.2em] hover:bg-indigo-500 hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center justify-center gap-2 group shadow-xl shadow-indigo-600/30"
                         type="submit">
                         INICIALIZAR SESIÓN
                         <span

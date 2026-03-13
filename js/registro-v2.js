@@ -22,14 +22,14 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!userData.email.includes('@')) {
             statusDiv.classList.remove('hidden');
             statusText.innerText = 'ERROR: EMAIL INVÁLIDO';
-            statusText.classList.add('text-red-500');
+            statusText.classList.add('text-rose-500');
             return;
         }
 
         if (userData.telefono.length < 7) {
             statusDiv.classList.remove('hidden');
             statusText.innerText = 'ERROR: TELÉFONO DEMASIADO CORTO';
-            statusText.classList.add('text-red-500');
+            statusText.classList.add('text-rose-500');
             return;
         }
 
@@ -38,16 +38,16 @@ document.addEventListener('DOMContentLoaded', () => {
         submitBtn.innerHTML = 'PROCESANDO... <span class="material-symbols-outlined animate-spin text-xl">sync</span>';
         statusDiv.classList.remove('hidden');
         statusText.innerText = 'Sincronizando con Nexus Core...';
-        statusText.classList.remove('text-red-500');
-        statusText.classList.add('text-[#00f2ff]');
+        statusText.classList.remove('text-rose-500');
+        statusText.classList.add('text-indigo-400');
 
         try {
             await api.createClient(userData);
 
             // Success
             statusText.innerText = 'IDENTIDAD REGISTRADA EXITOSAMENTE';
-            statusText.classList.remove('text-[#00f2ff]');
-            statusText.classList.add('text-green-500');
+            statusText.classList.remove('text-indigo-400');
+            statusText.classList.add('text-emerald-400');
             submitBtn.innerHTML = 'REGISTRADO <span class="material-symbols-outlined text-xl">check_circle</span>';
 
             // Optional: Redirect after success
@@ -58,8 +58,8 @@ document.addEventListener('DOMContentLoaded', () => {
         } catch (error) {
             console.error('Registration error:', error);
             statusText.innerText = 'ERROR EN PROTOCOLO: NO SE PUDO REGISTRAR';
-            statusText.classList.remove('text-[#00f2ff]');
-            statusText.classList.add('text-red-500');
+            statusText.classList.remove('text-indigo-400');
+            statusText.classList.add('text-rose-500');
             submitBtn.disabled = false;
             submitBtn.innerHTML = 'REINTENTAR REGISTRO <span class="material-symbols-outlined text-xl">refresh</span>';
         }
