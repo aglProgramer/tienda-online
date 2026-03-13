@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Nexus Panel - Gestión de Inventario</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#6366f1',
+                        secondary: '#06b6d4',
+                        navy: '#020617',
+                        'deep-slate': '#0f172a',
+                    }
+                }
+            }
+        }
+    </script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300..800&family=Space+Grotesk:wght@300..700&display=swap"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        .admin-glass {
+            background: rgba(15, 23, 42, 0.8);
+            backdrop-filter: blur(30px);
+            border: 1px solid rgba(251, 191, 36, 0.1);
+        }
+
+        .admin-card {
+            background: linear-gradient(135deg, rgba(251, 191, 36, 0.05), rgba(15, 23, 42, 0.2));
+            border: 1px solid rgba(251, 191, 36, 0.1);
+        }
+    </style>
+</head>
+
+<body
+    class="bg-[#020617] text-slate-100 font-['Space_Grotesk'] overflow-x-hidden selection:bg-amber-400 selection:text-navy">
+    <div class="fixed inset-0 bg-[radial-gradient(circle_at_80%_20%,#1e1b4b_0%,#020617_100%)] -z-20"></div>
+
+    <div class="flex min-h-screen">
+        <!-- Sidebar Admin -->
+        <aside class="w-64 admin-glass border-r border-amber-400/10 flex flex-col p-6 sticky top-0 h-screen">
+            <div class="flex items-center gap-3 text-amber-400 mb-12">
+                <span class="material-symbols-outlined text-4xl">shield_person</span>
+                <h2 class="font-display text-xl font-bold tracking-tighter uppercase">Nexus_Admin</h2>
+            </div>
+
+            <nav class="flex-1 space-y-2">
+                <a href="admin.html"
+                    class="flex items-center gap-4 px-4 py-3 rounded-xl text-slate-400 hover:bg-white/5 hover:text-white transition-all">
+                    <span class="material-symbols-outlined">dashboard</span>
+                    <span class="text-xs uppercase tracking-widest">Resumen General</span>
+                </a>
+                <a href="index.html"
+                    class="flex items-center gap-4 px-4 py-3 rounded-xl text-slate-400 hover:bg-white/5 hover:text-white transition-all">
+                    <span class="material-symbols-outlined">storefront</span>
+                    <span class="text-xs uppercase tracking-widest">Ver Tienda</span>
+                </a>
+                <a href="inventario.html"
+                    class="flex items-center gap-4 px-4 py-3 rounded-xl bg-amber-400/10 text-amber-400 font-bold">
+                    <span class="material-symbols-outlined">inventory_2</span>
+                    <span class="text-xs uppercase tracking-widest">Almacén de Datos</span>
+                </a>
+                <a href="reportes.html"
+                    class="flex items-center gap-4 px-4 py-3 rounded-xl text-slate-400 hover:bg-white/5 hover:text-white transition-all">
+                    <span class="material-symbols-outlined">analytics</span>
+                    <span class="text-xs uppercase tracking-widest">Informes de Red</span>
+                </a>
+            </nav>
+
+            <div class="mt-auto pt-6 border-t border-white/5">
+                <button id="logout-btn"
+                    class="w-full py-3 bg-red-500/10 text-red-400 text-[10px] font-bold uppercase tracking-widest rounded-lg border border-red-500/20 hover:bg-red-500 hover:text-white transition-all">Cerrar
+                    Sesión</button>
+            </div>
+        </aside>
+
+        <!-- Main Admin Content -->
+        <main class="flex-1 p-8 md:p-12">
+            <header class="flex flex-col md:flex-row justify-between items-start md:items-center gap-6 mb-12">
+                <div>
+                    <h1 class="text-4xl font-display font-black text-white uppercase tracking-tighter">Gestión de
+                        Inventario</h1>
+                    <p class="text-slate-500 text-xs mt-2 uppercase tracking-[0.3em]">Estado del Almacén: <span
+                            class="text-emerald-400">OPTIMIZADO // DATA_LINK_READY</span></p>
+                </div>
+                <button id="add-product-btn"
+                    class="bg-amber-400 hover:bg-amber-500 text-navy px-6 py-3 rounded-xl text-xs font-black uppercase tracking-widest flex items-center gap-2 transition-all shadow-lg shadow-amber-400/20">
+                    <span class="material-symbols-outlined">add</span>
+                    Añadir Nuevo Sistema
+                </button>
+            </header>
+
+            <!-- Filters & Search -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                <div class="md:col-span-2 relative">
+                    <input type="text" id="inventory-search" placeholder="Buscar por SKU, nombre o ID de serie..."
+                        class="w-full bg-deep-slate/50 border border-white/10 rounded-2xl px-12 py-4 text-sm font-mono focus:ring-1 focus:ring-amber-400 focus:border-amber-400 outline-none transition-all placeholder:text-slate-600">
+                    <span
+                        class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-slate-500">search</span>
+                </div>
+                <div class="relative">
+                    <select id="category-filter"
+                        class="w-full bg-deep-slate/50 border border-white/10 rounded-2xl px-6 py-4 text-sm font-black uppercase tracking-widest appearance-none focus:ring-1 focus:ring-amber-400 outline-none transition-all cursor-pointer">
+                        <option value="all">Todas las Categorías</option>
+                        <option value="Computadores">Computadores</option>
+                        <option value="Componentes">Componentes</option>
+                        <option value="Periféricos">Periféricos</option>
+                    </select>
+                    <span
+                        class="material-symbols-outlined absolute right-4 top-1/2 -translate-y-1/2 text-slate-500 pointer-events-none">expand_more</span>
+                </div>
+            </div>
+
+            <!-- Inventory Table -->
+            <div class="admin-glass rounded-3xl overflow-hidden border border-white/5 shadow-2xl">
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left border-collapse">
+                        <thead>
+                            <tr
+                                class="bg-white/5 text-slate-400 text-[10px] font-black uppercase tracking-[0.2em] border-b border-white/5">
+                                <th class="px-8 py-5">Visual</th>
+                                <th class="px-8 py-5">Identificación_Sistema</th>
+                                <th class="px-8 py-5">Categoría</th>
+                                <th class="px-8 py-5">Nivel_Stock</th>
+                                <th class="px-8 py-5">Créditos_Unidad</th>
+                                <th class="px-8 py-5 text-center">Protocolos</th>
+                            </tr>
+                        </thead>
+                        <tbody id="inventory-tbody" class="divide-y divide-white/5">
+                            <!-- Injected by inventory.js -->
+                            <tr>
+                                <td colspan="6" class="px-8 py-20 text-center">
+                                    <div class="animate-spin inline-block size-8 border-[3px] border-current border-t-transparent text-amber-400 rounded-full"
+                                        role="status">
+                                        <span class="sr-only">Cargando...</span>
+                                    </div>
+                                    <p class="mt-4 text-[10px] font-mono text-slate-500 uppercase tracking-widest">
+                                        Sincronizando con el Núcleo...</p>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="px-8 py-6 border-t border-white/5 flex items-center justify-between">
+                    <p class="text-[10px] font-mono text-slate-500 uppercase" id="inventory-count">Cargando registros...
+                    </p>
+                    <div class="flex items-center gap-2">
+                        <button
+                            class="size-8 rounded-lg bg-white/5 hover:bg-white/10 flex items-center justify-center transition-all disabled:opacity-20">
+                            <span class="material-symbols-outlined text-sm">chevron_left</span>
+                        </button>
+                        <span class="px-4 text-xs font-black font-mono">01</span>
+                        <button
+                            class="size-8 rounded-lg bg-white/5 hover:bg-white/10 flex items-center justify-center transition-all">
+                            <span class="material-symbols-outlined text-sm">chevron_right</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script type="module" src="js/inventario.js"></script>
+    <script src="js/admin.js"></script>
+</body>
+
+</html>

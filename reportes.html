@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Nexus Panel - Informes de Red</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#6366f1',
+                        secondary: '#06b6d4',
+                        navy: '#020617',
+                        'deep-slate': '#0f172a',
+                    }
+                }
+            }
+        }
+    </script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300..800&family=Space+Grotesk:wght@300..700&display=swap"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        .admin-glass {
+            background: rgba(15, 23, 42, 0.8);
+            backdrop-filter: blur(30px);
+            border: 1px solid rgba(251, 191, 36, 0.1);
+        }
+
+        .admin-card {
+            background: linear-gradient(135deg, rgba(251, 191, 36, 0.05), rgba(15, 23, 42, 0.2));
+            border: 1px solid rgba(251, 191, 36, 0.1);
+        }
+    </style>
+</head>
+
+<body
+    class="bg-[#020617] text-slate-100 font-['Space_Grotesk'] overflow-x-hidden selection:bg-amber-400 selection:text-navy">
+    <div class="fixed inset-0 bg-[radial-gradient(circle_at_80%_20%,#1e1b4b_0%,#020617_100%)] -z-20"></div>
+
+    <div class="flex min-h-screen">
+        <!-- Sidebar Admin -->
+        <aside class="w-64 admin-glass border-r border-amber-400/10 flex flex-col p-6 sticky top-0 h-screen">
+            <div class="flex items-center gap-3 text-amber-400 mb-12">
+                <span class="material-symbols-outlined text-4xl">shield_person</span>
+                <h2 class="font-display text-xl font-bold tracking-tighter uppercase">Nexus_Admin</h2>
+            </div>
+
+            <nav class="flex-1 space-y-2">
+                <a href="admin.html"
+                    class="flex items-center gap-4 px-4 py-3 rounded-xl text-slate-400 hover:bg-white/5 hover:text-white transition-all">
+                    <span class="material-symbols-outlined">dashboard</span>
+                    <span class="text-xs uppercase tracking-widest">Resumen General</span>
+                </a>
+                <a href="index.html"
+                    class="flex items-center gap-4 px-4 py-3 rounded-xl text-slate-400 hover:bg-white/5 hover:text-white transition-all">
+                    <span class="material-symbols-outlined">storefront</span>
+                    <span class="text-xs uppercase tracking-widest">Ver Tienda</span>
+                </a>
+                <a href="inventario.html"
+                    class="flex items-center gap-4 px-4 py-3 rounded-xl text-slate-400 hover:bg-white/5 hover:text-white transition-all">
+                    <span class="material-symbols-outlined">inventory_2</span>
+                    <span class="text-xs uppercase tracking-widest">Almacén de Datos</span>
+                </a>
+                <a href="reportes.html"
+                    class="flex items-center gap-4 px-4 py-3 rounded-xl bg-amber-400/10 text-amber-400 font-bold">
+                    <span class="material-symbols-outlined">analytics</span>
+                    <span class="text-xs uppercase tracking-widest">Informes de Red</span>
+                </a>
+            </nav>
+
+            <div class="mt-auto pt-6 border-t border-white/5">
+                <button id="logout-btn"
+                    class="w-full py-3 bg-red-500/10 text-red-400 text-[10px] font-bold uppercase tracking-widest rounded-lg border border-red-500/20 hover:bg-red-500 hover:text-white transition-all">Cerrar
+                    Sesión</button>
+            </div>
+        </aside>
+
+        <!-- Main Admin Content -->
+        <main class="flex-1 p-8 md:p-12">
+            <header class="flex flex-col md:flex-row justify-between items-start md:items-center gap-6 mb-12">
+                <div>
+                    <h1 class="text-4xl font-display font-black text-white uppercase tracking-tighter">Análisis de
+                        Operaciones</h1>
+                    <p class="text-slate-500 text-xs mt-2 uppercase tracking-[0.3em]">Métricas en Tiempo Real: <span
+                            class="text-cyan-400">DATA_FLOW_ACTIVE // 256-BIT_ENCRYPTION</span></p>
+                </div>
+                <div class="flex items-center gap-3 bg-white/5 border border-white/10 px-6 py-3 rounded-2xl">
+                    <span class="material-symbols-outlined text-amber-400">calendar_today</span>
+                    <span id="date-range" class="text-xs font-bold font-mono tracking-widest">OCT 01 - OCT 31,
+                        2023</span>
+                </div>
+            </header>
+
+            <!-- Stats Grid -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+                <div class="admin-card p-6 rounded-2xl border border-white/5 shadow-sm group">
+                    <p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-4">Ingresos Totales</p>
+                    <div class="flex items-end justify-between">
+                        <h3 class="text-2xl font-black text-white" id="stat-revenue">$45,230</h3>
+                        <span
+                            class="flex items-center text-[10px] font-bold text-emerald-400 bg-emerald-400/10 px-2 py-1 rounded-full font-mono">
+                            +12.5%
+                        </span>
+                    </div>
+                </div>
+                <div class="admin-card p-6 rounded-2xl border border-white/5 shadow-sm">
+                    <p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-4">Valor Promedio</p>
+                    <div class="flex items-end justify-between">
+                        <h3 class="text-2xl font-black text-white" id="stat-avg-order">$85.20</h3>
+                        <span
+                            class="flex items-center text-[10px] font-bold text-rose-500 bg-rose-500/10 px-2 py-1 rounded-full font-mono">
+                            -2.1%
+                        </span>
+                    </div>
+                </div>
+                <div class="admin-card p-6 rounded-2xl border border-white/5 shadow-sm">
+                    <p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-4">Tasa de Conversión
+                    </p>
+                    <div class="flex items-end justify-between">
+                        <h3 class="text-2xl font-black text-white" id="stat-conversion">3.42%</h3>
+                        <span
+                            class="flex items-center text-[10px] font-bold text-emerald-400 bg-emerald-400/10 px-2 py-1 rounded-full font-mono">
+                            +0.5%
+                        </span>
+                    </div>
+                </div>
+                <div class="admin-card p-6 rounded-2xl border border-white/5 shadow-sm">
+                    <p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-4">Órdenes Totales</p>
+                    <div class="flex items-end justify-between">
+                        <h3 class="text-2xl font-black text-white" id="stat-total-orders">531</h3>
+                        <span
+                            class="flex items-center text-[10px] font-bold text-emerald-400 bg-emerald-400/10 px-2 py-1 rounded-full font-mono">
+                            +8.2%
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Charts Section -->
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <div class="lg:col-span-2 space-y-8">
+                    <div class="admin-glass p-8 rounded-3xl border border-white/5 shadow-2xl">
+                        <div class="flex items-center justify-between mb-8">
+                            <h4
+                                class="text-sm font-bold uppercase tracking-[0.2em] text-white underline decoration-amber-400 decoration-2 underline-offset-8">
+                                Flujo de Ingresos</h4>
+                            <div class="flex gap-4">
+                                <span class="flex items-center gap-2 text-[10px] font-mono text-slate-500">
+                                    <span class="size-2 rounded-full bg-primary"></span> INGRESOS_RED
+                                </span>
+                            </div>
+                        </div>
+                        <div class="relative h-[250px] w-full">
+                            <svg class="w-full h-full" preserveAspectRatio="none" viewBox="0 0 500 150">
+                                <defs>
+                                    <linearGradient id="chartGradient" x1="0" x2="0" y1="0" y2="1">
+                                        <stop offset="0%" stop-color="rgba(99, 102, 241, 0.3)"></stop>
+                                        <stop offset="100%" stop-color="rgba(99, 102, 241, 0)"></stop>
+                                    </linearGradient>
+                                </defs>
+                                <path
+                                    d="M0,130 C50,120 80,40 120,60 C160,80 200,20 250,50 C300,80 350,10 400,30 C450,50 480,100 500,90 L500,150 L0,150 Z"
+                                    fill="url(#chartGradient)"></path>
+                                <path
+                                    d="M0,130 C50,120 80,40 120,60 C160,80 200,20 250,50 C300,80 350,10 400,30 C450,50 480,100 500,90"
+                                    fill="none" stroke="#6366f1" stroke-linecap="round" stroke-width="2"></path>
+                            </svg>
+                            <div
+                                class="flex justify-between mt-6 text-[9px] font-black text-slate-600 uppercase tracking-widest font-mono">
+                                <span>OCT 01</span>
+                                <span>OCT 07</span>
+                                <span>OCT 14</span>
+                                <span>OCT 21</span>
+                                <span>OCT 28</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Top Products Table -->
+                    <div class="admin-glass p-8 rounded-3xl border border-white/5 shadow-2xl overflow-hidden">
+                        <h4 class="text-sm font-bold uppercase tracking-[0.2em] text-white mb-8">Sistemas de Alto
+                            Rendimiento</h4>
+                        <div class="overflow-x-auto">
+                            <table class="w-full text-left">
+                                <thead class="border-b border-white/5">
+                                    <tr class="text-[10px] font-black text-slate-500 uppercase tracking-[0.2em]">
+                                        <th class="pb-5">Unidad_Sistema</th>
+                                        <th class="pb-5">Transacciones</th>
+                                        <th class="pb-5">Ingresos_Generados</th>
+                                        <th class="pb-5 text-right">Estatus_Red</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="top-products-tbody" class="divide-y divide-white/5">
+                                    <!-- Placeholder data -->
+                                    <tr class="group hover:bg-white/5 transition-all">
+                                        <td class="py-5">
+                                            <div class="flex items-center gap-4">
+                                                <div
+                                                    class="size-10 bg-primary/10 rounded-xl flex items-center justify-center">
+                                                    <span
+                                                        class="material-symbols-outlined text-primary">laptop_mac</span>
+                                                </div>
+                                                <span class="text-xs font-bold text-white uppercase">Laptop Lenovo
+                                                    I7</span>
+                                            </div>
+                                        </td>
+                                        <td class="py-5 text-[10px] font-mono">142</td>
+                                        <td class="py-5 text-[10px] font-black font-mono text-emerald-400">$4,970.00
+                                        </td>
+                                        <td class="py-5 text-right">
+                                            <span
+                                                class="text-[9px] font-black px-2.5 py-1 rounded-lg bg-emerald-500/10 text-emerald-400 uppercase tracking-widest border border-emerald-500/20">TRENDING</span>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Insight Column -->
+                <div class="space-y-8">
+                    <div class="admin-glass p-8 rounded-3xl border border-white/5 shadow-2xl">
+                        <h4 class="text-sm font-bold uppercase tracking-[0.2em] text-white mb-8">Categorías Dominantes
+                        </h4>
+                        <div class="space-y-8" id="category-stats">
+                            <div>
+                                <div class="flex justify-between text-[10px] font-black uppercase tracking-widest mb-3">
+                                    <span class="text-slate-400">Computadores</span>
+                                    <span class="text-amber-400">45%</span>
+                                </div>
+                                <div class="h-1.5 w-full bg-white/5 rounded-full overflow-hidden">
+                                    <div class="h-full bg-amber-400 rounded-full shadow-[0_0_10px_rgba(251,191,36,0.5)]"
+                                        style="width: 45%;"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between text-[10px] font-black uppercase tracking-widest mb-3">
+                                    <span class="text-slate-400">Componentes</span>
+                                    <span class="text-cyan-400">30%</span>
+                                </div>
+                                <div class="h-1.5 w-full bg-white/5 rounded-full overflow-hidden">
+                                    <div class="h-full bg-cyan-400 rounded-full shadow-[0_0_10px_rgba(6,182,212,0.5)]"
+                                        style="width: 30%;"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- AI Insights -->
+                    <div
+                        class="rounded-3xl p-8 border border-amber-400/20 bg-gradient-to-br from-amber-400/5 to-transparent relative overflow-hidden group">
+                        <div
+                            class="absolute -right-4 -top-4 opacity-10 group-hover:scale-125 transition-transform duration-700">
+                            <span class="material-symbols-outlined text-8xl text-amber-400">bolt</span>
+                        </div>
+                        <h4
+                            class="text-xs font-black uppercase tracking-[0.2em] text-amber-400 flex items-center gap-2 mb-6">
+                            <span class="material-symbols-outlined text-sm">auto_awesome</span>
+                            Sugerencias de Red
+                        </h4>
+                        <ul class="space-y-5 text-[11px] leading-relaxed text-slate-400 font-medium">
+                            <li class="flex gap-3">
+                                <span class="material-symbols-outlined text-emerald-400 text-sm">check_circle</span>
+                                Los ingresos han escalado un 12% respecto al ciclo anterior.
+                            </li>
+                            <li class="flex gap-3">
+                                <span class="material-symbols-outlined text-cyan-400 text-sm">tips_and_updates</span>
+                                La conversión alcanza su pico en terminales móviles los fines de semana.
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script type="module" src="js/reportes.js"></script>
+    <script src="js/admin.js"></script>
+</body>
+
+</html>
