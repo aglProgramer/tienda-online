@@ -11,7 +11,7 @@ export const api = {
     async getProducts() {
         console.log("Accediendo a tabla: producto...");
         try {
-            const response = await fetch(`${SUPABASE_URL}/producto?select=*`, {
+            const response = await fetch(`${SUPABASE_URL}/producto?select=*&order=id_producto.desc`, {
                 method: "GET",
                 headers: headers
             });
@@ -20,6 +20,58 @@ export const api = {
         } catch (error) {
             console.error("Error al obtener productos:", error);
             return [];
+        }
+    },
+
+    async createProduct(productData) {
+        try {
+            const response = await fetch(`${SUPABASE_URL}/producto`, {
+                method: "POST",
+                headers: {
+                    ...headers,
+                    "Prefer": "return=representation"
+                },
+                body: JSON.stringify(productData)
+            });
+            if (!response.ok) throw new Error("Failed to create product");
+            const result = await response.json();
+            return result[0];
+        } catch (error) {
+            console.error("Error creating product:", error);
+            throw error;
+        }
+    },
+
+    async updateProduct(id, productData) {
+        try {
+            const response = await fetch(`${SUPABASE_URL}/producto?id_producto=eq.${id}`, {
+                method: "PATCH",
+                headers: {
+                    ...headers,
+                    "Prefer": "return=representation"
+                },
+                body: JSON.stringify(productData)
+            });
+            if (!response.ok) throw new Error("Failed to update product");
+            const result = await response.json();
+            return result[0];
+        } catch (error) {
+            console.error("Error updating product:", error);
+            throw error;
+        }
+    },
+
+    async deleteProduct(id) {
+        try {
+            const response = await fetch(`${SUPABASE_URL}/producto?id_producto=eq.${id}`, {
+                method: "DELETE",
+                headers: headers
+            });
+            if (!response.ok) throw new Error("Failed to delete product");
+            return true;
+        } catch (error) {
+            console.error("Error deleting product:", error);
+            throw error;
         }
     },
 
